@@ -1,0 +1,406 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/kendo.all.min.js"></script>
+    <script src="articleData.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+
+         <link href="../styles/css/style.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../styles/kendo.common.min.css" />
+    <link rel="stylesheet" href="../styles/kendo.default.min.css" />
+    <link href="../styles/css/bootstrap.min.css" rel="stylesheet" />
+   
+
+
+
+   
+
+    <style type="text/css">
+        tbody > tr {
+            white-space: nowrap;
+            height:55px;
+        }
+
+        /*tbody > td {
+            text-align:center;
+        }*/
+
+        .articalHeader {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            height: 88px;
+            margin-top: 0px;
+        }
+
+        /*.menuButton {
+            margin-right: 5px;
+        }*/
+
+        .articalTitle {
+
+            text-align: center;
+            height: 50px;
+        }
+
+        td .k-button {
+            border: none;
+        }
+         .groupbtn{
+            position:absolute;
+           
+            /*top:1px;
+            border:none;*/
+            /*top:10px;*/
+            margin-top:-5px;
+        }
+         .morebtn{
+             border:none;
+             background-color:transparent;
+         }
+         /*.dropdown-menu{
+             width:30px;
+             height:100px;
+         }*/
+         .morePreview{
+            display:block;
+            width:55px;
+         }
+         .moreDelete{
+             display:block;
+             width:55px;
+             
+         }
+         .dropdownMenu{
+             width:60px;
+             /*height:80px;*/
+             min-width:70px;
+         }
+        
+         /*#articleGrid{
+             width:90%;
+         }*/
+         /*.moreIcon{
+             position:absolute;
+         }*/
+         /*#articleGrid{
+              position:absolute;
+         }*/
+        /*h5 {
+            visibility: hidden;
+        }*/
+
+         /*td .btn-group{
+            position: absolute;
+            margin-top: -4px;
+        }*/
+
+        /*ul,li,button{margin:0;padding:0;}
+ul{list-style-type:none;}
+button{cursor:pointer;}
+#outer{width:70px;margin:10px auto;}
+#ime{margin-top:5px;background:#fff;border:1px solid #9a99ff;display:none;}
+#ime li{width:100%;line-height:24px;display:inline-block;vertical-align:top;}
+#close{border-top:1px solid #9a99ff;}
+#ime li a{color:#00c;padding:0 5px;display:block;text-decoration:none;}
+#ime li a:hover{background:#d9e1f6;*/
+
+        }
+    </style>
+    <style >
+
+         .releaseState{
+             /*width:90%;
+                 
+             height:80%;*/
+             /*width:5px;*/
+             color:blueviolet;
+         }
+         .noCheckState{
+             color:red;
+         }
+         .CheckedState{
+             color:greenyellow;
+
+         }
+         .api-status{
+             /*text-align:center;*/
+             border: 2px solid;
+             /*font-size:12px;*/
+             padding:5px;
+             border-radius:5px;
+         }
+
+    </style>
+</head>
+
+<body style="margin: 1px">
+
+    <div id="example">
+
+        <div class="articalTitle">
+            <h1>文章演示网页</h1>
+        </div>
+
+        <div class="articalHeader">
+
+
+            <button class=" k-button menuButton">增加</button>
+            <button class=" k-button menuButton">删除</button>
+            <button class=" k-button menuButton">修改</button>
+            <button class=" k-button menuButton">预览</button>
+            <!--<button></button>-->
+        </div>
+        <div id="articleGrid"></div>
+
+        <!--<div class="btn-group">
+        <button class="btn k-button dropdown-toggle morebtn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">更多
+            <span class="caret"></span>
+        </button>
+            <ul class="dropdown-menu">
+                <li><a href="">复制</ a></li>
+                <li id="more-delete"><a href="">删除</ a></li>
+            </ul>
+         </div>-->
+
+        <!--class="k-icon k-i-more-vertical k-setting-fieldmenu k-state-border-down"-->
+
+        <!--<span class="k-icons"><i class="k-icon k-i-more-vertical"></i></span>-->
+
+
+        <!--<span class="k-field-actions">-->
+        <!--    <span class="k-icon k-i-more-vertical k-setting-fieldmenu k-state-border-down"></span>
+     </span>-->
+
+
+
+
+
+        <script>
+
+            //$(function () {
+            //    $(".moreDelete").click(function () {
+            //        window.location.href = "https://www.baidu.com";
+
+
+            //    })
+            //});
+
+            //document.getElementsByClassName("k-icon").click(window.location.href = "https://www.baidu.com");
+
+
+            //$(".k-icon").click(window.location.href="https://www.baidu.com");
+
+            $(document).ready(function () {
+                $("#articleGrid").kendoGrid({
+                    dataSource: {
+                        data: articleDatas,
+                        //schema: {
+                        //    model: {
+                        //        fields: {
+                        //            ProductName: { type: "string" },
+                        //            UnitPrice: { type: "number" },
+                        //            UnitsInStock: { type: "number" },
+                        //            Discontinued: { type: "boolean" },
+                        //            //More: {type:"string"},
+                        //        }
+                        //    }
+                        //},
+                        pageSize: 15
+                    },
+                    height: 550,
+                    //width:1500,
+                    //width: 1000,
+                    //columns-height:80,
+                    //scrollable: true,
+
+                    sortable: true,
+
+                    //columnMenu: true,
+                    //filterable: true,
+                    pageable: {
+                        //language:
+                        input: true,
+                        info: true,
+                        numeric: false,
+
+                        messages: {
+                            display: "显示 {0}-{1} 条，共 {2} 条记录",
+                            page: "第",
+                            of: "页，共 {0}页"
+
+                        }
+                    },
+                    //editable: true,
+                    columns: [
+                        //"ProductName",
+                        { field: "ArticalID", title: "文章ID", width: "30px", },
+                        { field: "ArticalTitle", title: "文章标题", width: "60px", },
+                        //attributes{}
+                        { field: "ArticalBrief", title: "文章简介", width: "70px", },
+                        { field: "ArticalKeywords", title: "文章关键字", width: "60px", },
+                        {
+                            field: "ArticalState",
+                           // template: "<span class='api-status' id='status'>#if (ArticalState == 1) {# 已发布 #}else if(ArticalState==2){# 未审核 #}" +
+                           //"else if(ArticalState==3){# 已审核 #}else{# 未知 #} #</span> ",
+                             template: kendo.template($("#stateColor").html()),
+                             attributes: {
+                                "class": "# if(data.ArticalState == 1) { # releaseState # } else if(data.ArticalState == 2){# noCheckState #}"  +
+                                "else if(data.ArticalState==3){# CheckedState #} else{# noStateState #}#"
+                        }
+                            //template: kendo.template($("#stateColor").html())
+                     , title: "文章发布状态", width: "40px",
+                        },
+
+                        //{
+                        //    field: ArticalState,
+                            
+                        //}
+                        //{
+                        //      command: [
+                        //        {
+                        //            template: kendo.template($("#stateColor").html())
+                        //        }
+                        //    ] , title: "更多操作", width: "40px",
+                        //},
+                        //{ field: "ArticalState", title: "文章发布状态", width: "60px", },
+                        { field: "ArticalAuthor", title: "文章发布者", width: "60px", },
+                        { field: "AriticalReleaseTime", title: "文章发布时间", width: "80px", },
+                        { field: "AriticalChecker", title: "文章审核者", width: "60px", },
+                        { field: "AriticalCheckTime", title: "文章审核时间", width: "60px", },
+
+                        {
+                            command: [
+                                {
+                                    template: kendo.template($("#moreOperates").html())
+                                }
+                            ] , title: "更多操作", width: "40px",
+                        }
+
+   
+                            //rowTemplate: kendo.template($("#stateColor").html())
+
+                            //command: [
+                            //    {
+                            //        template: kendo.template($("#moreOperates").html())
+                            //    }
+                            //]
+
+
+
+                            //    {
+                            //    name: "delete",
+                            //    text: "删除",
+
+                            //    click: function (e) {                         
+                            //        var tr = $(e.target).closest("tr"); // get the current table row (tr)
+                            //        var data = this.dataItem(tr);
+                            //        console.log("Details for: " + data.ArticalID);
+                            //        alert(data.ArticalID);
+                            //        //alert(this.text);
+                            //    }
+                            //},{
+                            //    name: "preview",
+                            //    text: "预览",
+                            //    click: function (e) {                 
+                            //        var tr = $(e.target).closest("tr"); // get the current table row (tr)
+                            //        var data = this.dataItem(tr);
+                            //        console.log("Details for: " + data.ArticalID);
+                            //        //alert(data.ArticalID);
+                            //        //this.focuse();
+                            //        //alert(this.text);
+                            //    }
+                            //}
+
+                          
+                      
+
+                        //{ command: { text: "View Details", }, title: " ", width: "180px" }
+                        //{ command: { text: "View Details", click: showDetails }, title: " ", width: "180px" }
+                        //{
+                        //    template: "<div><span style='k-icon k-i-more-vertical k-setting-fieldmenu'></span></div>",
+                        //    title: "More",
+                        //    width: "40px",
+                        //},
+                        //{
+                        //    template: "<div style='width:50px height:30px'><></div>",
+                        //    //width: "50px",
+                        //    //height: "50px",
+                        //},
+                    ],
+                    //editable: true,
+                    //rows: [
+                    //    height,"800px",
+                    //]
+                }).data("kendoGrid");
+
+                // $(".moreDelete").click(function () {
+                //    window.location.href = "https://www.baidu.com";
+
+
+                //})
+
+                //var tr = $(this).closest("tr");
+                //var grid = $("#articleGrid").data("kendoGrid");
+                //var data = grid.dataItem(tr);
+                //console.log(data);
+                //var grid = $("#articleGrid").data("kendoGrid");
+                //var te = grid.columns[4];
+                //console.log(te);
+                //var tTable = grid.table.find("td")[4].columns.length;
+                //console.log(tTable);
+//                 console.log(grid.columns[4]);
+//for (var i = 0; i < grid.columns.length; i++) {
+//  // displays "name" and then "age"
+//}
+                //var flag = $(".stateLable").html();
+                //if (flag=="未审核") {
+                //    $(".stateLable").css("color","red");
+                //}
+                //console.log(flag);
+                //var flag=document.getElementsByClassName("stateLable").
+               
+            });
+        </script>
+        <script type="text/x-kendo-template" id="stateColor">
+
+            <span class="api-status" id="status">#if (ArticalState == 1) {# 已发布 #}else if(ArticalState==2){# 未审核 #}
+                           else if(ArticalState==3){# 已审核 #}else{# 未知 #} #</span> 
+
+        </script>
+        <!-- <script  type="text/x-kendo-template" id="stateColor">
+             template: "<span class='api-status' id='status'>#if (ArticalState == 1) {# 已发布 #}else if (ArticalState == 2){# 未发布 #}else if (state == 3){# 维护 #}"
+                            + "else if (state == 4){# 发布 #}else if (state == 5){# 待定 #}else if (state == 6){# 开发 #}else if (state == 7){# 测试 #}else if (state == 8){# 对接 #}#</span>",
+                        attributes: {
+                            "class": "# if(data.state == 1) { # eo-label-success # } else if(data.state == 2){# eo-label-deflat #} else{ # eo-label-other #} #"
+                        },
+    </script>-->
+        <style>
+            /*col{
+             height:5px;
+         }*/
+        </style>
+    </div>
+
+
+         <script type="text/x-kendo-template" id="moreOperates">
+
+    <div class="btn-group groupbtn">
+           
+        <button class="btn k-button dropdown-toggle morebtn"   data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false"> <i class="k-icon k-i-more-vertical"></i>
+        </button>
+        <ul class="dropdown-menu dropdownMenu">
+            <li class="morePreview k-button">预览</li>
+            <li class="moreDelete k-button">删除</li>
+        </ul>
+    </div>
+  
+    </script>
+    <script></script>
+</body>
+</html>

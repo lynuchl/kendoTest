@@ -1,0 +1,243 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/kendo.all.min.js"></script>
+    <script src="articleData.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+
+     <link href="../styles/css/style.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../styles/kendo.common.min.css" />
+    <link rel="stylesheet" href="../styles/kendo.default.min.css" />
+    <link href="../styles/css/bootstrap.min.css" rel="stylesheet" />
+   
+
+
+        <script type="text/x-kendo-template" id="moreOperates">
+
+   
+  
+    </script>
+   
+
+    <style type="text/css">
+        tbody > tr {
+            white-space: nowrap;
+            height:55px;
+        }
+
+    
+
+        .articalHeader {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            height: 88px;
+            margin-top: 0px;
+        }
+
+        /*.menuButton {
+            margin-right: 5px;
+        }*/
+
+        .articalTitle {
+
+            text-align: center;
+            height: 50px;
+        }
+
+        td .k-button {
+            border: none;
+        }
+         .groupbtn{
+            position:absolute;
+           
+            /*top:1px;
+            border:none;*/
+            /*top:10px;*/
+            margin-top:-5px;
+        }
+         .morebtn{
+             border:none;
+             background-color:transparent;
+         }
+         /*.dropdown-menu{
+             width:30px;
+             height:100px;
+         }*/
+         .morePreview{
+            display:block;
+            width:55px;
+         }
+         .moreDelete{
+             display:block;
+             width:55px;
+             
+         }
+         .dropdownMenu{
+             width:60px;
+             /*height:80px;*/
+             min-width:70px;
+         }
+
+      
+    </style>
+    <style >
+
+         .releaseState{
+             /*width:90%;
+                 
+             height:80%;*/
+             /*width:5px;*/
+             color:blueviolet;
+         }
+         .noCheckState{
+             color:red;
+         }
+         .CheckedState{
+             color:greenyellow;
+
+         }
+         .api-status{
+             /*text-align:center;*/
+             border: 2px solid;
+             /*font-size:12px;*/
+             padding:5px;
+             border-radius:5px;
+         }
+
+    </style>
+</head>
+
+<body style="margin: 1px">
+
+    <div id="example">
+
+        <div class="articalTitle">
+            <h1>文章演示网页</h1>
+        </div>
+
+        <div class="articalHeader">
+
+
+            <button class=" k-button menuButton">增加</button>
+            <button class=" k-button menuButton">删除</button>
+            <button class=" k-button menuButton">修改</button>
+            <button class=" k-button menuButton">预览</button>
+            <!--<button></button>-->
+        </div>
+        <div id="articleGrid"></div>
+
+      
+
+
+
+
+
+        <script>
+
+
+            $(document).ready(function () {
+                $("#articleGrid").kendoGrid({
+                    dataSource: {
+                        data: articleDatas,
+                        //schema: {
+                        //    model: {
+                        //        fields: {
+                        //            ProductName: { type: "string" },
+                        //            UnitPrice: { type: "number" },
+                        //            UnitsInStock: { type: "number" },
+                        //            Discontinued: { type: "boolean" },
+                        //            //More: {type:"string"},
+                        //        }
+                        //    }
+                        //},
+                        pageSize: 15
+                    },
+                    height: 550,
+                    //width:1500,
+                    //width: 1000,
+                    //columns-height:80,
+                    //scrollable: true,
+
+                    sortable: true,
+
+                    //columnMenu: true,
+                    //filterable: true,
+                    pageable: {
+                        //language:
+                        input: true,
+                        info: true,
+                        numeric: false,
+
+                        messages: {
+                            display: "显示 {0}-{1} 条，共 {2} 条记录",
+                            page: "第",
+                            of: "页，共 {0}页"
+
+                        }
+                    },
+                    //editable: true,
+                    columns: [
+                        //"ProductName",
+                        { field: "ArticalID", title: "文章ID", width: "30px", },
+                        { field: "ArticalTitle", title: "文章标题", width: "60px", },
+                        //attributes{}
+                        { field: "ArticalBrief", title: "文章简介", width: "70px", },
+                        { field: "ArticalKeywords", title: "文章关键字", width: "60px", },
+                        {
+                            field: "ArticalState",
+                           // template: "<span class='api-status' id='status'>#if (ArticalState == 1) {# 已发布 #}else if(ArticalState==2){# 未审核 #}" +
+                           //"else if(ArticalState==3){# 已审核 #}else{# 未知 #} #</span> ",
+                             template: kendo.template($("#stateColor").html()),
+                             attributes: {
+                                "class": "# if(data.ArticalState == 1) { # releaseState # } else if(data.ArticalState == 2){# noCheckState #}"  +
+                                "else if(data.ArticalState==3){# CheckedState #} else{# noStateState #}#"
+                        }
+                            //template: kendo.template($("#stateColor").html())
+                     , title: "文章发布状态", width: "40px",
+                        },
+
+                        //{
+                        //    field: ArticalState,
+                            
+                        //}
+                        //{
+                        //      command: [
+                        //        {
+                        //            template: kendo.template($("#stateColor").html())
+                        //        }
+                        //    ] , title: "更多操作", width: "40px",
+                        //},
+                        //{ field: "ArticalState", title: "文章发布状态", width: "60px", },
+                        { field: "ArticalAuthor", title: "文章发布者", width: "60px", },
+                        { field: "AriticalReleaseTime", title: "文章发布时间", width: "80px", },
+                        { field: "AriticalChecker", title: "文章审核者", width: "60px", },
+                        { field: "AriticalCheckTime", title: "文章审核时间", width: "60px", },
+
+                        {
+                            command: [
+                                {
+                                    template: kendo.template($("#moreOperates").html())
+                                }
+                            ] , title: "更多操作", width: "40px",
+                        }
+
+                    ],
+                
+                }).data("kendoGrid");
+
+               
+            });
+        </script>
+       
+    </div>
+
+
+
+
+</body>
+</html>

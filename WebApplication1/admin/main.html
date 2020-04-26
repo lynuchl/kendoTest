@@ -1,0 +1,250 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+
+         <link rel="stylesheet" href="../styles/kendo.common.min.css" />
+    <link rel="stylesheet" href="../styles/kendo.default.min.css" />
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/kendo.all.min.js"></script>
+
+    <style>
+
+        .frameIndex{
+            width:100%;
+            height:80px
+            /*frameborder:no;*/
+            /*margin-top:-10px;
+            margin-left:-0px;
+            margin-right:0px;*/
+        }
+      .bodyPanelBar{
+          width:350px;
+          height:120px;
+      }
+      .bodyTest{
+          width:1200px;
+          height:300px;
+      }
+      .panelBars{
+          width:30%;
+          height:100%;
+          float:left;
+          /*margin-left:0px;*/
+      }
+      .showGrid{
+          width:70%;
+          /*height:300px;*/
+          float:left;
+          height:100%
+           /*height:100px;*/
+          /*margin-left:0px;*/
+          /*margin-bottom:0px;*/
+      }
+      .contents{
+          /*position:absolute;
+         /*margin-top:-100px;*/
+         
+          /*overflow:auto;*/
+          /*height:80%;
+          top:80px;*/
+
+          background-color: #ff0000;
+width: 100%;
+overflow: auto;
+position: absolute;
+top: 80px;
+bottom: 0px;
+height: auto;
+border: 0px solid #000000;
+clear: both;
+
+          /*bottom:0px;*/
+      }
+      /*.k-grid{
+          height:100%
+      }*/
+      /*.k-grid-content .k-auto-scrollable{
+          height:600px !important;
+      }*/
+      /*.panelBars*/
+    </style>
+</head>
+<body style="margin:0px">
+    
+    <!--<div style="width:100%;height:100%">  --> 
+
+   
+
+    <div style="height:80px; width:100%;float:left" class="headerBar">
+
+   <!-- <iframe src="index.html"  class="frameIndex"></iframe>-->
+          <!--<button>提交</button>-->
+   </div>
+
+
+    <div style="width:100%" class="contents">
+
+   <div id="example" class="panelBars">
+                <ul id="panelbar">
+                <!--<li class="k-state-active">
+                    <span class="k-link k-state-selected">My Teammates</span>
+                    <div style="padding: 10px;">
+                        <div class="teamMate">
+                            <img src="../content/web/panelbar/andrew.jpg" alt="Andrew Fuller">
+                            <div class="details">
+                                <h2>Andrew Fuller</h2>
+                                <p>Team Lead</p>
+                            </div>
+                        </div>
+                        <div class="teamMate">
+                            <img src="../content/web/panelbar/nancy.jpg" alt="Nancy Leverling">
+                            <div class="details">
+                                <h2>Nancy Leverling</h2>
+                                <p>Sales Associate</p>
+                            </div>
+                        </div>
+                        <div class="teamMate">
+                            <img src="../content/web/panelbar/robert.jpg" alt="Robert King">
+                            <div class="details">
+                                <h2>Robert King</h2>
+                                <p>Business System Analyst</p>
+                            </div>
+                        </div>
+                    </div>
+                </li>-->
+                <li>
+                    Projects
+                    <ul>
+                        <li>New Business Plan</li>
+                        <li>
+                            Sales Forecasts
+                            <ul>
+                                <li>Q1 Forecast</li>
+                                <li>Q2 Forecast</li>
+                                <li>Q3 Forecast</li>
+                                <li>Q4 Forecast</li>
+                            </ul>
+                        </li>
+                        <li>Sales Reports</li>
+                    </ul>
+
+                </li>
+                <li>
+                    Programs
+                    <ul>
+                        <li>Monday</li>
+                        <li>Tuesday</li>
+                        <li>Wednesday</li>
+                        <li>Thursday</li>
+                        <li>Friday</li>
+                    </ul>
+                </li>
+                <li disabled="disabled">
+                    Communication
+                </li>
+            </ul>
+        </div>
+        <div class="showGrid">
+
+            <div id="grid" style="height:200px"></div>
+
+</div>
+
+        </div>
+<style type="text/css">
+    .customer-photo {
+        display: inline-block;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background-size: 32px 35px;
+        background-position: center center;
+        vertical-align: middle;
+        line-height: 32px;
+        box-shadow: inset 0 0 1px #999, inset 0 0 10px rgba(0,0,0,.2);
+        margin-left: 5px;
+    }
+
+    .customer-name {
+        display: inline-block;
+        vertical-align: middle;
+        line-height: 32px;
+        padding-left: 3px;
+    }
+
+                #panelbar {
+                    /*max-width: 400px;*/
+                    /*margin: 0 auto;*/
+                }                
+                .teamMate h2 {
+                    font-size: 1.4em;
+                    font-weight: normal;
+                    padding-top: 20px;
+                }
+                .teamMate p {
+                    margin: 0;
+                }
+                .teamMate img {
+                    display: inline-block;
+                    margin: 5px 15px 5px 5px;
+                    border: 1px solid #ccc;
+                    border-radius: 50%;
+                }
+                .details {
+                    display: inline-block;
+                    vertical-align: top;
+                }
+            </style>
+            <script>
+                $(document).ready(function() {
+                    $("#panelbar").kendoPanelBar({
+                        expandMode: "single"
+                    });
+                });
+
+                $(document).ready(function () {
+
+                    $(".headerBar").load("index.html");
+
+            $("#grid").kendoGrid({
+                dataSource: {
+                    type: "odata",
+                    transport: {
+                        read: "https://demos.telerik.com/kendo-ui/service/Northwind.svc/Customers"
+                    },
+                    pageSize: 20
+                },
+                height: 550,
+                groupable: true,
+                sortable: true,
+                pageable: {
+                    refresh: true,
+                    pageSizes: true,
+                    buttonCount: 5
+                },
+                columns: [{
+                    template: "<div class='customer-photo'" +
+                    "style='background-image: url(../content/web/Customers/#:data.CustomerID#.jpg);'></div>" +
+                    "<div class='customer-name'>#: ContactName #</div>",
+                    field: "ContactName",
+                    title: "Contact Name",
+                    width: 240
+                }, {
+                    field: "ContactTitle",
+                    title: "Contact Title"
+                }, {
+                    field: "CompanyName",
+                    title: "Company Name"
+                }, {
+                    field: "Country",
+                    width: 150
+                }]
+            });
+        });
+
+            </script>
+    <!-- </div>-->
+</body>
+</html>

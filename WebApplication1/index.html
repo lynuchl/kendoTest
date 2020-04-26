@@ -1,0 +1,39 @@
+﻿<html>
+<head>
+    <title>Kendo UI Web</title>
+    <!--<link href="styles/kendo.common.min.css" rel="stylesheet" />-->
+    <link href="styles/kendo.default.min.css" rel="stylesheet" />
+    <!--<script src="js/kendo.all.min.js"></script>-->
+    <script src="js/jquery.min.js"></script>
+    <!--<script src="https://atts.w3cschool.cn/attachments/image/wk/kendouidevelopmenttutorial/jquery.min.js"></script>
+    <script src="https://atts.w3cschool.cn/attachments/image/wk/kendouidevelopmenttutorial/kendo.web.min.js"></script>-->
+</head>
+    <script>
+
+        function testClick() {
+
+              $.post({
+                url: "http://localhost:6926/api/Values/Post1",
+                contentType: "application/json",
+                data: JSON.stringify({ data: "123" }),
+                success: function (data) {
+                    alert(data);
+                }
+               
+
+            })
+
+        }
+    </script>
+<body>
+    <!--<input id="datepicker" />-->
+    <!--<script>
+            $(function () {
+                $("#datepicker").kendoDatePicker();
+            });
+    </script>-->
+    <!--<input type="text" name="name" class="k-textbox " value="" />-->
+    <!--<button onclick="testClick()">提交</button>-->
+    <input type="button" name="name" value="提交" onclick="testClick()" />
+</body>
+</html>

@@ -1,0 +1,343 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link rel="stylesheet" href="../styles/kendo.common.min.css" />
+    <link rel="stylesheet" href="../styles/kendo.default.min.css" />
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/kendo.all.min.js"></script>
+
+    <style>
+        .aggregationHeader{
+            width:100%;
+            height:80px;
+            background-color:antiquewhite;
+
+            display:flex;
+            justify-content:space-around;
+            align-items:center;
+            /*margin:0px;*/
+        }
+
+        .headerLogo{
+            /*position:absolute;*/
+            /*top:20px;*/
+            height:40px;
+            width:40px;
+            text-align:center;
+            /*margin-left:20px;
+            margin-top:20px;*/
+        }
+        .headerMenu{
+            /*display:inline-block;*/
+            /*position:absolute;
+            margin-left:160px;
+            margin-top:20px;*/
+            /*position:absolute;*/
+           /*margin:20px,auto;*/
+            height:40px;
+            width:600px;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+        }
+        .bodyHeader{
+            display:flex;
+            justify-content:center;
+
+        }
+        .scrollView{
+            width:800px;
+            height:500px;
+            margin-left:20px;
+        }
+        .api{
+            width:500px;
+            height:500px;
+        }
+        .k-card{
+            width:86%;
+            height:100%;
+        }
+
+        /*.aggregationBody{
+            width:100%;
+            display:flex;
+            justify-content:center;
+        }*/
+        
+            .k-card-action{
+
+                width:246px;
+                height:86px;
+                /*display:flex;
+                flex-grow:1;*/
+
+            }
+
+            .k-under-card{
+                /*width:100%;*/
+                height:1320px;
+                height:100px;
+                display:flex;
+                justify-content:center;
+            }
+
+            .k-card-underAction{
+                width:250px;
+                height:100px;
+            }
+            .k-underAction{
+                width:100%;
+                height:100%;
+            }
+            .underCard{
+
+                width:1320px;
+                display:flex;
+                justify-content:space-between;
+            }
+          
+
+             .onCard{
+
+                 width:500px;
+                 height:420px;
+             }
+             .onnCard{
+                width: 500px;
+                height:500px;
+             }
+             .k-card-header{
+                 width:467px;
+                 height:80px;
+             }
+
+             .photo{
+                 width:800px;
+                 height:500px;
+             }
+          
+    </style>
+</head>
+<body style="margin:0px">
+    <div class="aggregationHeader">
+        <div class="headerLogo">
+            <a href="#"><img  src="../img/favicon.png"/></a>
+        </div>
+        <div class="headerMenu">
+            <a href="#">首页</a>
+            <a href="#">API</a>
+            <a href="#">数据块</a>
+            <a href="#">智慧未来</a>
+            <a href="#">聚合有赢</a>
+            <a href="#">聚合会员</a>
+        </div>
+        <div class="headerAction">
+
+            <a href="#"></a>
+            <a href="#">登陆</a>
+            <a href="#">注册</a>
+        </div>
+    </div>
+    <div class="aggregationBody">
+
+        <div class="bodyHeader">
+            <div class="api">
+            <!--    <div class="apiTitle">   
+                    <h3>数据分类</h3>                       
+                </div>-->
+
+               <!-- <div class="apiMain">
+                     <ul>
+                            <li>
+                                <i></i>
+                                <a>生活服务</a>
+
+                            </li>
+                           <li>
+                                <i></i>
+                                <a>金融科技</a>
+
+                            </li><li>
+                                <i></i>
+                                <a>交通地理</a>
+
+                            </li><li>
+                                <i></i>
+                                <a>充值缴费</a>
+
+                            </li><li>
+                                <i></i>
+                                <a>充值缴费</a>
+
+                            </li><li>
+                                <i></i>
+                                <a>充值缴费</a>
+
+                            </li><li>
+                                <i></i>
+                                <a>充值缴费</a>
+
+                            </li><li>
+                                <i></i>
+                                <a>充值缴费</a>
+
+                            </li>
+                         </ul>
+                </div>-->
+
+
+           <div class="k-card onnCard">
+            <div class="k-card-header">
+                <h5 class="k-card-title">数据分类</h5>
+              <!--  <h6 class="k-card-subtitle">Capital of Italy</h6>-->
+            </div>
+           
+            <div class="k-card-actions k-card-actions-stretched onCard">
+         
+
+                <span class="k-card-action" ><span class="button1 k-button k-flat k-primary">生活服务</span></span>
+                <span class="k-card-action" ><span class="k-button k-flat k-primary">金融科技</span></span>
+             
+                <span class="k-card-action"> <span class="k-button k-flat k-primary"><span class="k-icon k-i-undo " style="background-color:black;color:blue;margin-right:5px"></span>交通地理</span></span>
+                <span class="k-card-action"><span class="k-button k-flat k-primary">充值缴费</span></span> 
+                <span class="k-card-action"><span class="k-button k-flat k-primary">数据智能</span></span>
+                <span class="k-card-action"><span class="k-button k-flat k-primary">企业管理</span></span>
+                <span class="k-card-action"><span class="k-button k-flat k-primary">应用开发</span></span>
+                <span class="k-card-action"><span class="k-button k-flat k-primary">电子商务</span></span>
+                <span class="k-card-action"><span class="k-button k-flat k-primary">吃喝玩乐</span></span>
+                <span class="k-card-action"><span class="k-button k-flat k-primary">文娱视频</span></span>
+            </div>
+           
+        </div>
+ </div>
+            <div class="scrollView">
+                <div class="photo photo1" data-role="page"></div>
+                <div class="photo photo2" data-role="page"></div>
+                <div class="photo photo3" data-role="page"></div>
+                <div class="photo photo4" data-role="page"></div>
+                <div class="photo photo5" data-role="page"></div>
+               </div>
+        
+</div>
+      
+    </div >
+
+    <div class="k-under-card">
+        <div class=" k-card underCard">
+          
+           
+            <div class="k-card-actions k-card-actions-stretched underCard">
+         
+                <span class="k-card-underAction" >
+                    <span class="k-button k-flat k-primary k-underAction">
+                        <span class="k-icon k-i-undo " style="background-color:black;color:blue;margin-right:5px">
+                        </span>                   
+                        <span style="margin-left:10px">
+                        <b>短信API服务</b> <br />
+                          三网合一短信通道
+                        </span>
+                    </span>
+
+                </span>
+                <span class="k-card-underAction"> 
+                    <span class="k-button k-flat k-primary k-underAction">
+                        <span class="k-icon k-i-undo " style="background-color:black;color:blue;margin-right:5px">
+                        </span>                   
+                        <span style="margin-left:10px">
+                        <b>黑砖会员</b> <br />
+                          节省企业成本，致力发展
+                        </span>
+                    </span>
+                </span>
+                 <span class="k-card-underAction"> 
+                    <span class="k-button k-flat k-primary k-underAction">
+                        <span class="k-icon k-i-undo " style="background-color:black;color:blue;margin-right:5px">
+                        </span>                   
+                        <span style="margin-left:10px">
+                        <b>免费数据</b> <br />
+                          海量数据，随心挑选
+                        </span>
+                    </span>
+                </span> <span class="k-card-underAction"> 
+                    <span class="k-button k-flat k-primary k-underAction">
+                        <span class="k-icon k-i-undo " style="background-color:black;color:blue;margin-right:5px">
+                        </span>                   
+                        <span style="margin-left:10px">
+                        <b>金融API应用</b> <br />
+                         使用多场景金融服务
+                        </span>
+                    </span>
+                </span> <span class="k-card-underAction"> 
+                    <span class="k-button k-flat k-primary k-underAction">
+                        <span class="k-icon k-i-undo " style="background-color:black;color:blue;margin-right:5px">
+                        </span>                   
+                        <span style="margin-left:10px">
+                        <b>数据块下载</b> <br />
+                          海量免费试用
+                        </span>
+                    </span>
+                </span>
+               <!-- <span class="k-card-underAction"><span class="k-button k-flat k-primary k-underAction">充值缴费</span></span> 
+                <span class="k-card-underAction" ><span class="k-button k-flat k-primary k-underAction">金融科技</span></span>
+                <span class="k-card-underAction"> <span class="k-button k-flat k-primary k-underAction"><span class="k-icon k-i-undo " style="background-color:black;color:blue;margin-right:5px"></span>交通地理</span></span>-->
+
+            </div>
+           
+        </div>
+
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            $(".scrollView").kendoScrollView({
+                enablePager: true,
+                contentHeight: "100%"
+            });
+        });
+
+        function button1Click() {
+            window.location.href = "https://www.baidu.com";
+        }
+
+        $(".button1").kendoButton({
+            enable: true,
+            click:button1Click
+                        //click: onClick
+                    });
+    </script>
+    <style>
+
+            .photo {
+            display: inline-block;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+      
+
+        .photo1{
+            background-image:url("../img/BG1.jpg");
+        }
+       
+        .photo2 {
+            background-image: url("../img/BG2.jpg");
+        }
+          .photo3{
+            background-image:url("../img/BG3.jpg");
+
+        }
+           .photo4{
+            background-image:url("../img/BG4.jpg");
+
+        }
+           .photo5{
+            background-image:url("../img/BG5.jpg");
+
+           }
+    </style>
+</body>
+</html>

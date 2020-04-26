@@ -1,0 +1,185 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link rel="stylesheet" href="../styles/kendo.common.min.css" />
+    <link rel="stylesheet" href="../styles/kendo.default.min.css" />
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/kendo.all.min.js"></script>
+    <!--<link href="../styles/css/bootstrap.min.css" rel="stylesheet" />-->
+    <!--<link href="../styles/css/fontawesome-all.min.css" rel="stylesheet" />
+    <link href="../styles/css/amikoko.admin.css" rel="stylesheet" />
+    <link href="../styles/css/theme_default.min.css" rel="stylesheet" />-->
+    <!--<script src="../js/ikki.js"></script>-->
+    <!--<link href="../theme/button-theme.css" rel="stylesheet" />-->
+    <!--<script src="../js/kendo.zh-CHS.js"></script>-->
+    <style>
+        .login{
+                 position: absolute;         
+        top: 50%;
+         left: 50%;
+         transform: translate(-50%, -50%);
+            /*width: 800px;
+      height: 400px;
+                 margin:auto;*/
+            /*text-align:center;*/
+            /*margin-top:10%;*/
+        }
+        .loginImg{
+            width:80px;
+            height:60px;
+        }
+        .k-textbox{
+            width:340px;
+            height:40px;
+            /*padding:114px,6px,4px,6px;*/
+        }
+        .login div {
+            margin-top:10px;
+        }
+        .k-button{
+            width:130px;
+            height:40px;
+            
+            padding:4px,6px,4px,6px;
+        }
+        .k-submit{
+            background-color:dodgerblue;
+
+        }
+        .k-registor{
+            background-color:gray;
+        }
+        .button-icon{
+            width:40px;
+            height:40px;
+        }
+        .k-textbox{
+            margin-left:-5px;
+        }
+        /*.formTop{
+            margin-left:100px;
+        }*/
+    </style>
+</head>
+<body id="login" >
+    <div class="login" >
+
+          <div id="">
+              <form class="form-validation" id="" >
+
+                  <div>
+                     
+        <div class="formTop" >
+            <img class="loginImg" src="../img/login.jpg" alt="登陆图片" style="margin-left:160px"/>      
+            <h3 style="margin-left:120px">Kendo UI Admin <br /> <small style="margin-left:30px">后台管理系统</small></h3>
+        </div>
+                      <div >
+
+                           <!--<i class="k-icon k-i-user"></i>--> 
+                          <!--<input type="button" name="user" id="button-user" value="" />-->
+                          <button class="button-icon button-user-icon"></button>
+                          <input   class="k-textbox "  type="text" name="username" value="" placeholder="用户名:" required data-required-message="请输入用户名！" pattern="^[a-zA-Z0-9]*" data-pattern-msg="请输入大小写字母、或者数字!"/>
+
+                          <!--验证规则怎么制定-->
+                      </div>
+                      <div>
+
+                          <!--<i class="k-icon k-i-password"></i>-->
+                          <button class="button-icon button-password-icon"></button>
+                          <input type="text" class="k-textbox " name="password" value="" placeholder="密码:" required pattern="^[a-zA-Z0-9]*" data-pattern-msg="请输入大小写字母、或者数字!"/>
+                      </div>
+
+<!--                      <div>
+                          <!--<i class="k-icon k-i-validation-data"></i>-->
+                        <!--  <button class="button-icon button-validation-icon"></button>
+                          <input type="text" class="k-textbox" name="validation" value="" placeholder="这是一个验证!" required/>
+                      </div>-->
+                  </div>
+
+                  <div style="width:380px">
+
+                  <div style="height:40px ;width:380px">
+                      <!--<div style="text-align:left; display:inline-block">-->
+                      <div style="float:left">
+                      <label class="k-checkbox-label"><input type="checkbox" name="name" value="" class="k-checkbox" />记住密码</label>
+                      </div>
+                      <!--<div style="text-align:right" >-->
+                      <!--<div style="display:inline-block;text-align:right">-->
+                      <div style="float:right">
+                          <label class="k-checkbox-label">
+                          <a href="#">忘记密码</a>
+                          </label>
+                        
+                      </div>
+
+                  </div>
+                  <div>
+                      <div style="height:40px">
+                        <button class="k-button k-submit" type="button" style="float:left"  >登 陆</button>
+                        <button class="k-button k-registor" type="button" style="float:right">注 册</button> 
+                           <!--<em id="iconButton"></em>-->
+                          <!--<input type="button" name="user" id="iconButton" value="" />-->
+                      </div>
+                  </div>
+
+     </div>
+              </form>
+              </div>
+
+        <script>
+
+
+
+            $(document).ready(function () {
+               
+                var validatable = $(".form-validation").kendoValidator().data("kendoValidator");
+
+                $(".k-submit").click(function () {
+                    if (validatable.validate()) {
+
+                        //$(document).ready(function () {
+                        //$(".k-submit").kendoButton({
+                        //    click: loginButton
+                        //});
+
+
+
+                        loginButton();
+
+                       
+                        //window.alert("测试!!")
+                    }
+                });
+               
+
+                function loginButton() {
+                    window.location.href="main.html";
+                };
+
+                $(".button-user-icon").kendoButton({
+                    //icon: "k-icon k-i-user"
+                    icon: "k-icon k-i-user",
+                    enable: false,
+                });
+
+                $(".button-password-icon").kendoButton({
+                    icon: "k-icon k-i-password",
+                    enable:false,
+                });
+
+                $(".button-validation-icon").kendoButton({
+                    icon: "k-icon k-i-validation-data",
+                    enable: false,
+                });
+
+                
+            });
+   
+           
+        </script>
+
+    </div>
+</body>
+</html>
